@@ -152,7 +152,7 @@ We implement the model using a simple Monte Carlo simulation:
 
 ### 4.2 Trajectory Comparison: Society A vs Society B
 
-![fig_resilience](https://hackmd.io/_uploads/S1_5XBX-Zg.png)
+![fig_resilience](docs/fig_resilience.png)
 
 **Figure 1: Average resilience trajectories.**
 Society A gradually reduces grouping and converts moderate stress into resilience growth, converging to a high-resilience equilibrium. Society B experiences declining average resilience and eventually crosses the critical threshold $R_{\text{crit}} = 0.2$ at $t \approx t_{\text{mag}}$.
@@ -161,7 +161,7 @@ In Society B, higher stress increases $G_t^B$ via $\gamma_B C_t^B$, resilience r
 
 ### 4.3 Sensitivity to Empathy Nonlinearity $\alpha$
 
-![fig_sensitivity](https://hackmd.io/_uploads/rJ0qXHXW-g.png)
+![fig_sensitivity](docs/fig_sensitivity.png)
 
 **Figure 2: Sensitivity of Society B to the empathy nonlinearity exponent $\alpha$.**
 In this toy model, larger $\alpha$ implies more disproportionate stress among high-empathy individuals, which tends to lower resilience and bring collapse earlier.
