@@ -41,7 +41,15 @@ class SimulationConfig:
     k_B: float = 0.03  # Resilience erosion coefficient due to stress
     d_B: float = 0.02  # Baseline external support (safety net / buffering)
     eta_B: float = 0.03  # De-grouping / forgetting rate
+    k_B: float = 0.03  # Resilience erosion coefficient due to stress
+    d_B: float = 0.02  # Baseline external support (safety net / buffering)
+    eta_B: float = 0.03  # De-grouping / forgetting rate
     gamma_B: float = 0.005  # Reactivity of grouping to stress (stress-driven grouping)
+
+    # Network / Local Coupling parameters
+    use_local_grouping: bool = False # If True, G is a vector varying by agent based on neighbors
+    n_neighbors: int = 20  # Number of neighbors for local coupling (Small World / Random)
+    rewiring_prob: float = 0.1 # Probability of rewiring (for Watts-Strogatz small world)
 
 def common_plot_style():
     plt.style.use('default')  # Reset to default first
@@ -67,7 +75,31 @@ class SocialDynamicsSimulation:
         self.t_collapse: Optional[int] = None
         
         self._initialize_population()
+        if self.config.use_local_grouping:
+             self._initialize_network()
         self._initialize_state()
+
+    def _initialize_network(self):
+        """Create a Small-World network adjacency list for local interactions."""
+        # Simple Watts-Strogatz implementation using numpy
+        N = self.config.N
+        k = self.config.n_neighbors
+        p = self.config.rewiring_prob
+        
+        # 1. Regular ring lattice
+        self.neighbors = np.zeros((N, k), dtype=int)
+        for i in range(N):
+            for j in range(1, k // 2 + 1):
+                self.neighbors[i, j-1] = (i + j) % N
+                self.neighbors[i, k // 2 + j - 1] = (i - j) % N
+        
+        # 2. Random rewiring (simplified: just randomizing a fraction of indices)
+        # For a truly rigorous WS we'd iterate edges, but for this mean-field-plus 
+        # extension, purely randomizing a fraction of neighbor pointers is sufficient 
+        # to break local clusters matches the 'Small World' intent.
+        mask = self.rng.random(self.neighbors.shape) < p
+        random_neighbors = self.rng.integers(0, N, size=self.neighbors.shape)
+        self.neighbors = np.where(mask, random_neighbors, self.neighbors)
 
     def _initialize_population(self):
         N = self.config.N
@@ -87,10 +119,17 @@ class SocialDynamicsSimulation:
         R_init = np.clip(R_init, 0.0, 1.0)
         self.R_A = R_init.copy()
         self.R_B = R_init.copy()
-        self.G_A = self.config.initial_grouping
-        self.G_B = self.config.initial_grouping
+        
+        if self.config.use_local_grouping:
+            # G becomes a vector of size N
+            self.G_A = np.full(N, self.config.initial_grouping)
+            self.G_B = np.full(N, self.config.initial_grouping)
+        else:
+            # G is a scalar
+            self.G_A = self.config.initial_grouping
+            self.G_B = self.config.initial_grouping
 
-    def calculate_stress(self, G: float) -> np.ndarray:
+    def calculate_stress(self, G: float | np.ndarray) -> np.ndarray:
         return (self.E ** self.config.alpha) * (1 + self.config.beta * G)
 
     def step(self, t: int):
@@ -109,17 +148,38 @@ class SocialDynamicsSimulation:
         self.R_B = np.clip(self.R_B, 0.0, 1.0)
 
         # Social Cost & Update Grouping
-        C_B = S_B.mean()
-        self.G_A = max(0.0, self.G_A * (1 - self.config.eta_A))
-        self.G_B = max(
-            0.0, 
-            self.G_B + self.config.gamma_B * C_B - self.config.eta_B * self.G_B
-        )
+        # If scalar, C_B is scalar mean. If vector, C_B depends on neighbors.
+        
+        if self.config.use_local_grouping:
+            # Calculate local average stress for each agent
+            # S_B is (N,), neighbors is (N, k)
+            # We want C_B[i] = mean(S_B[neighbors[i]])
+            neighbor_stress = S_B[self.neighbors] # Shape (N, k)
+            C_B_local = neighbor_stress.mean(axis=1) # Shape (N,)
+            
+            self.G_A = np.maximum(0.0, self.G_A * (1 - self.config.eta_A))
+            self.G_B = np.maximum(
+                0.0, 
+                self.G_B + self.config.gamma_B * C_B_local - self.config.eta_B * self.G_B
+            )
+            
+            # For history, store the mean G
+            self.history['G_A'].append(self.G_A.mean())
+            self.history['G_B'].append(self.G_B.mean())
+            
+        else:
+            C_B = S_B.mean()
+            self.G_A = max(0.0, self.G_A * (1 - self.config.eta_A))
+            self.G_B = max(
+                0.0, 
+                self.G_B + self.config.gamma_B * C_B - self.config.eta_B * self.G_B
+            )
 
+            self.history['G_A'].append(self.G_A)
+            self.history['G_B'].append(self.G_B)
+        
         self.history['R_A'].append(self.R_A.mean())
         self.history['R_B'].append(self.R_B.mean())
-        self.history['G_A'].append(self.G_A)
-        self.history['G_B'].append(self.G_B)
 
         if (self.t_collapse is None 
                 and self.history['R_B'][-1] < self.config.maginot_threshold):
