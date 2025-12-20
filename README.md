@@ -208,7 +208,7 @@ In this extended mode:
 
 The simulation results confirms that the qualitative divergence between Society A and Society B is robust to this topological change. While local clustering can create "pockets of resonance" (echo chambers) where stress amplifies faster than the mean-field prediction, the overall macro-dynamic remains.
 
-![fig_gain](docs/fig_gain.pdf)
+![fig_gain](docs/fig_gain.png)
 
 **Figure 3: Impact of Network Gain ($\beta$) on Social Stability in the Support-Centric Regime (Society B).**
 As the network gain parameter $\beta$ increases, the system's ability to buffer stress diminishes rapidly. Even with high baseline support ($d_B$), a high-gain environment ($\beta > 0.5$) accelerates the arrival of the Maginot Time. This suggests that the "Paradox of Scale" is fundamentally driven by the *gain* of the network.
