@@ -1,0 +1,3 @@
+- Native American
+- Physists interested in social dynamics
+- Familiar with software and python programming
