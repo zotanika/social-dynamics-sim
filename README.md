@@ -1,6 +1,5 @@
 # The Paradox of Scale in Social Stress Dynamics:
 ## Evolutionary Mismatch, Policy Regimes, Network Gain, and the Maginot Time
-### (Extended Version)
 
 **Author:** Sunchul Jung (`zotanika@gmail.com`)
 
@@ -70,7 +69,6 @@ We treat empathy not just as a virtue but as a **feedback gain element** in the 
 This is analogous to the Larsen effect in audio systems: microphones are not "bad," but when the gain and feedback path are configured in certain ways, they contribute to runaway howling.
 
 ## 3. Mathematical Model: Two Policy Regimes
-\label{sec:model}
 
 In this section we specify a concrete two-regime model for stress and resilience dynamics. In Section 4, we will step back and embed this model in a more abstract framework that yields a general structural result.
 
@@ -151,7 +149,6 @@ Society A, as an idealized extreme, tends to reduce the salience of group labels
 * $R_{\text{crit}}$: critical resilience threshold used to define the Maginot Time.
 
 ## 4. A General Structural Result on Grouping
-\label{sec:general}
 
 The two-regime model above makes strong, specific assumptions about how stress and resilience evolve. In this section we step back and show that a key qualitative claim—that systematically "de-grouping" improves resilience and delays collapse—can be derived in a much more general setting.
 
@@ -176,7 +173,6 @@ Comparing two grouping paths $G_t$ and $\tilde{G}_t$ where $\tilde{G}_t \le G_t$
 This result confirms that "less grouping" is a structurally safe direction for resilience, regardless of specific regime parameters, provided the monotonicity assumptions hold.
 
 ## 5. Simulation Study and Extended Robustness
-\label{sec:simulation}
 
 ### 5.1 Basic Setup
 
@@ -197,7 +193,6 @@ Society A gradually reduces grouping and converts moderate stress into resilienc
 In this toy model, larger $\alpha$ implies more disproportionate stress among high-empathy individuals, which tends to lower resilience and bring collapse earlier.
 
 ### 5.4 Sensitivity to Network Gain and Topology (New)
-\label{sec:local-coupling}
 
 A potential critique of the mean-field model ($G_t$ as a global scalar) is that it ignores the complex clustering and local interactions typical of real social networks. To address this, we extended the simulation to support **Local Coupling** using a Small-World network model (Watts-Strogatz).
 
