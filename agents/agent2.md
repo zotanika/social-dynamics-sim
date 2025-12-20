@@ -1,3 +1,0 @@
-- Native Korean
-- Software developer interested in inventing break-through framework for making social dynamics more explainable
-- Has background in physics and statistics
