@@ -192,7 +192,7 @@ Society A gradually reduces grouping and converts moderate stress into resilienc
 **Figure 2: Sensitivity of Society B to the empathy nonlinearity exponent $\alpha$.**
 In this toy model, larger $\alpha$ implies more disproportionate stress among high-empathy individuals, which tends to lower resilience and bring collapse earlier.
 
-### 5.4 Sensitivity to Network Gain and Topology (New)
+### 5.4 Sensitivity to Network Gain and Topology
 
 A potential critique of the mean-field model ($G_t$ as a global scalar) is that it ignores the complex clustering and local interactions typical of real social networks. To address this, we extended the simulation to support **Local Coupling** using a Small-World network model (Watts-Strogatz).
 
