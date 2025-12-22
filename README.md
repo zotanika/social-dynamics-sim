@@ -1,9 +1,7 @@
 # The Paradox of Scale in Social Stress Dynamics:
 ## Evolutionary Mismatch, Policy Regimes, Network Gain, and the Maginot Time
 
-**Author:** Sunchul Jung (`zotanika@gmail.com`)  
-
----
+**Author:** [Sunchul Jung](mailto:zotanika@gmail.com)
 
 ## Abstract
 
@@ -23,8 +21,6 @@ Within this toy setting, we define a "Maginot Time" ($t_{\text{mag}}$) at which 
 
 The model is intentionally simplified and *not* intended as a literal description of any real country or ideology; rather, it aims to illustrate a structural perspective in which empathy, network gain, grouping, and policy regimes interact to shape long-run social fragility.
 
----
-
 ## 1. Introduction
 
 Contemporary societies exhibit multiple forms of fragility: severe polarization, chronic stress, and rapid escalation of seemingly minor conflicts. Public discourse and social science often frame these issues in moral or ideological terms:
@@ -34,7 +30,7 @@ Contemporary societies exhibit multiple forms of fragility: severe polarization,
 
 Empirical work in the social sciences has become increasingly sophisticated in survey design, statistical analysis, and big-data correlational methods. However, explicit *dynamic* models of how stress and resilience co-evolve over time—especially under different policy regimes and network structures—remain relatively rare.
 
-From the perspective of complex systems and evolutionary biology, part of the problem may be less about moral categories and more about *structure and dynamics*. We interpret this as a particular instance of **evolutionary mismatch** [^1]. Human psychological mechanisms, including empathy and stress response systems, were shaped in small groups with weak network coupling and substantial information latency. In such environments, empathy functions as a local shock absorber: it redistributes an individual's stress across the group and thereby protects the individual from collapse.
+From the perspective of complex systems and evolutionary biology, part of the problem may be less about moral categories and more about *structure and dynamics*. We interpret this as a particular instance of **evolutionary mismatch** [^2]. Human psychological mechanisms, including empathy and stress response systems, were shaped in small groups with weak network coupling and substantial information latency. In such environments, empathy functions as a local shock absorber: it redistributes an individual's stress across the group and thereby protects the individual from collapse.
 
 Digital technology and social media, however, have transformed the topology of social interaction. Physical latency has shrunk to nearly zero; connectivity and interaction frequency have exploded. In the language of control theory, this dramatically increases the *loop gain* of the social signal-processing system. It is a well-known engineering fact that a feedback loop designed for stability at low gain can drive a system into oscillation or divergence at high gain.
 
@@ -46,7 +42,7 @@ In this paper, inspired by Shannon's channel capacity [^1], system dynamics [^3]
 
 ### 2.1 Channel Capacity and Social Bandwidth
 
-Shannon [^2] showed that the capacity $C$ of a communication channel with signal power $S$, noise power $N$, and bandwidth $B$ is
+Shannon [^1] showed that the capacity $C$ of a communication channel with signal power $S$, noise power $N$, and bandwidth $B$ is
 $$ C = B \log_2\left(1 + \frac{S}{N}\right). $$
 
 By analogy, we may map this to a social context as follows:
@@ -551,8 +547,8 @@ class SocialDynamicsSimulation:
 
 ### References
 
-[^1]: E. A. Lloyd, "Evolutionary mismatch," in Encyclopedia of Evolutionary Biology, Academic Press, 2011.
-[^2]: C. E. Shannon, "A mathematical theory of communication," Bell System Technical Journal, vol. 27, pp. 379–423, 623–656, 1948.
-[^3]: J. W. Forrester, Industrial Dynamics, MIT Press, 1961.
-[^4]: J. W. Forrester, World Dynamics, Wright–Allen Press, 1971.
-[^5]: A. Pentland, Social Physics: How Good Ideas Spread — The Lessons from a New Science, Penguin Press, 2014.
+[^1]: C. E. Shannon, "A mathematical theory of communication,"*Bell System Technical Journal*, vol. 27, pp. 379–423, 623–656, 1948.
+[^2]: E. A. Lloyd, "Evolutionary mismatch," in *Encyclopedia of Evolutionary Biology*, Academic Press, 2011.
+[^3]: J. W. Forrester, *Industrial Dynamics*, MIT Press, 1961.
+[^4]: J. W. Forrester, *World Dynamics*, Wright–Allen Press, 1971.
+[^5]: A. Pentland, *Social Physics: How Good Ideas Spread — The Lessons from a New Science*, Penguin Press, 2014.
