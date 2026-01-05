@@ -1,0 +1,3 @@
+- Native Korean
+- Author and translator; experienced to publish liberal arts books in Korean
+- Pursueing beatiful writing in Korean
