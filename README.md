@@ -1,7 +1,6 @@
 # The Paradox of Scale in Social Stress Dynamics:
 ## Evolutionary Mismatch, Policy Regimes, Network Gain, and the Maginot Time
-
-**Author:** [Sunchul Jung](mailto:zotanika@gmail.com)
+**Author:** [Sunchul Jung](`mailto:zotanika@gmail.com`)
 
 ## Abstract
 
@@ -276,7 +275,8 @@ Figure 1 shows a representative simulation under the following parameter choices
 *   $k_A = 0.09$, $\lambda_A = 0.005$, $\eta_A = 0.05$;
 *   $k_B = 0.03$, $d_B = 0.02$, $\eta_B = 0.03$, $\gamma_B = 0.005$.
 
-![Average resilience trajectories in Society A (adaptive/autonomy-oriented) and Society B (support-centric). Both societies start from the same empathy distribution and initial resilience. Society A gradually reduces grouping and converts moderate stress into resilience growth, converging to a high-resilience equilibrium. Society B experiences declining average resilience and eventually crosses the critical threshold $R_{\text{crit}} = 0.2$ at $t \approx t_{\text{mag}}$.](docs/fig_resilience.png)
+![Fig 1](docs/fig_resilience.png)
+> **Fig 1**. Average resilience trajectories in Society A (adaptive/autonomy-oriented) and Society B (support-centric). Both societies start from the same empathy distribution and initial resilience. Society A gradually reduces grouping and converts moderate stress into resilience growth, converging to a high-resilience equilibrium. Society B experiences declining average resilience and eventually crosses the critical threshold $R_{\text{crit}} = 0.2$ at $t \approx t_{\text{mag}}$.
 
 In this example:
 *   In Society A, $G_t^A$ decays at rate $\eta_A$, $k_A R(1-R)$ fosters growth, and the erosion term is modest. The system stabilizes at a high average resilience with low grouping.
@@ -292,7 +292,8 @@ We next examine how the empathy nonlinearity exponent $\alpha$ affects the stabi
 
 Figure 2 visualizes this sensitivity analysis.
 
-![Sensitivity of Society B to the empathy nonlinearity exponent $\alpha$. The blue line shows the final average resilience $\bar{R}^B(T)$; the red dashed line shows the collapse time $t_{\text{mag}}$ (or $T$ if no collapse occurs). In this toy model, larger $\alpha$ implies more disproportionate stress among high-empathy individuals, which tends to lower resilience and bring collapse earlier.](docs/fig_sensitivity.png)
+![Fig 2](docs/fig_sensitivity.png)
+> **Fig 2**. Sensitivity of Society B to the empathy nonlinearity exponent $\alpha$. The blue line shows the final average resilience $\bar{R}^B(T)$; the red dashed line shows the collapse time $t_{\text{mag}}$ (or $T$ if no collapse occurs). In this toy model, larger $\alpha$ implies more disproportionate stress among high-empathy individuals, which tends to lower resilience and bring collapse earlier.
 
 In this toy setting, increasing $\alpha$ makes stress among high-empathy individuals grow faster than linearly, which, combined with network gain, makes the support-centric regime more fragile.
 
@@ -307,7 +308,8 @@ In this extended mode:
 
 The simulation results confirms that the qualitative divergence between Society A and Society B is robust to this topological change. While local clustering can create "pockets of resonance" (echo chambers) where stress amplifies faster than the mean-field prediction, the overall macro-dynamic remains: policies that facilitate the accumulation of grouping-based stress eventually hit a tipping point (Maginot Time).
 
-![Impact of Network Gain ($\beta$) on Social Stability in the Support-Centric Regime (Society B). As the network gain parameter $\beta$ increases, the system's ability to buffer stress diminishes rapidly. Even with high baseline support ($d_B$), a high-gain environment ($\beta > 0.5$) accelerates the arrival of the Maginot Time. The effect is exacerbated in local coupling scenarios where stress resonates within clusters before dissipating.](docs/fig_gain.png)
+![Fig 3](docs/fig_gain.png)
+> **Fig 3**. Impact of Network Gain ($\beta$) on Social Stability in the Support-Centric Regime (Society B). As the network gain parameter $\beta$ increases, the system's ability to buffer stress diminishes rapidly. Even with high baseline support ($d_B$), a high-gain environment ($\beta > 0.5$) accelerates the arrival of the Maginot Time. The effect is exacerbated in local coupling scenarios where stress resonates within clusters before dissipating.
 
 Figure 3 shows the critical role of the gain parameter $\beta$. When $\beta$ is low, the network acts as a passive medium, and the support-centric regime is viable. However, as $\beta$ crosses a critical threshold, the positive feedback loop between stress and grouping dominates, rendering the support mechanism insufficient. This suggests that the "Paradox of Scale" is fundamentally driven by the *gain* of the network, which modern digital technologies have increased by orders of magnitude compared to the ancestral environment.
 
@@ -376,7 +378,7 @@ The goal is not to settle normative debates about empathy or justice, but to sug
 
 ## Appendix A. Python Simulation Code
 
-The following Python code implements the two-regime dynamics, the sensitivity analysis, and the extended **Local Coupling / Network Mode** discussed in Section 5. The code instantiates one specific case of the more general monotone framework described in Section 4.
+The following Python code implements the two-regime dynamics, the sensitivity analysis, and the extended **Local Coupling / Network Mode** discussed in Section 5. The code instantiates one specific case of the more general monotone framework described in Section 4. The full code is available at [https://github.com/zotanika/social-dynamics-sim](https://github.com/zotanika/social-dynamics-sim).
 
 ```python
 import numpy as np
