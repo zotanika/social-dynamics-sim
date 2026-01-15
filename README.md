@@ -93,7 +93,9 @@ We denote individual resilience in Society A and Society B as $R_i^A(t)$ and $R_
 
 #### Resilience dynamics.
 Resilience evolves differently under the two regimes:
+
 $$ R_i^A(t+1) = R_i^A(t) + k_A\, R_i^A(t)\bigl(1 - R_i^A(t)\bigr) - \lambda_A\, S_i^A(t), $$
+
 $$ R_i^B(t+1) = R_i^B(t) - k_B\, S_i^B(t) + d_B. $$
 
 Interpretation:
@@ -106,6 +108,7 @@ Interpretation:
     *   The constant $+d_B$ represents external support (welfare, protection, emotional assistance) that maintains a baseline level of resilience. On its own, this term stabilizes but does not inherently promote growth in $R$.
 
 In both societies, stress is computed from the stress equation with their respective grouping indices:
+
 $$ S_i^A(t) = E_i^{\alpha} (1 + \beta G_t^A), \quad S_i^B(t) = E_i^{\alpha} (1 + \beta G_t^B). $$
 
 #### Grouping dynamics.
@@ -147,15 +150,21 @@ The two-regime model above makes strong, specific assumptions about how stress a
 
 Consider a population of $N$ individuals indexed by $i=1,\dots,N$, each with a fixed empathy parameter $E_i$. We assume:
 *   A *stress function* $H(E,G)$ that maps empathy $E$ and grouping level $G$ to nonnegative stress:
+  
     $$ S_i(t) = H\bigl(E_i, G_t\bigr) \ge 0. $$
+    
 *   A *resilience update function* $F(R,S;\theta)$ that maps current resilience $R$, stress $S$, and a vector of regime parameters $\theta$ (encoding policy regime, support structure, etc.) to next-period resilience:
+  
     $$ R_i(t+1) = F\bigl(R_i(t), S_i(t); \theta\bigr). $$
+
 *   Initial conditions $R_i(0)$ are given and identical across the scenarios we compare.
 
 We now impose weak monotonicity assumptions on $H$ and $F$.
 
 **Assumption 1 (Grouping increases stress).** For all $E$ and all $G_1 \le G_2$,
+
 $$ H(E,G_1) \le H(E,G_2). $$
+
 That is, holding empathy fixed, higher grouping/coupling never reduces perceived stress.
 
 **Assumption 2 (Stress erodes resilience).** For all $R$ and all $S_1 \le S_2$,
