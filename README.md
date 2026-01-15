@@ -151,11 +151,11 @@ The two-regime model above makes strong, specific assumptions about how stress a
 Consider a population of $N$ individuals indexed by $i=1,\dots,N$, each with a fixed empathy parameter $E_i$. We assume:
 *   A *stress function* $H(E,G)$ that maps empathy $E$ and grouping level $G$ to nonnegative stress:
   
-    $$ S_i(t) = H\bigl(E_i, G_t\bigr) \ge 0. $$
+    $$S_i(t) = H\bigl(E_i, G_t\bigr) \ge 0$$.
     
 *   A *resilience update function* $F(R,S;\theta)$ that maps current resilience $R$, stress $S$, and a vector of regime parameters $\theta$ (encoding policy regime, support structure, etc.) to next-period resilience:
   
-    $$ R_i(t+1) = F\bigl(R_i(t), S_i(t); \theta\bigr). $$
+    $$R_i(t+1) = F\bigl(R_i(t), S_i(t); \theta\bigr)$$.
 
 *   Initial conditions $R_i(0)$ are given and identical across the scenarios we compare.
 
