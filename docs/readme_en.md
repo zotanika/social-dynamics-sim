@@ -375,7 +375,7 @@ The goal is not to settle normative debates about empathy or justice, but to sug
 
 ## Appendix A. Python Simulation Code
 
-The following Python code implements the two-regime dynamics, the sensitivity analysis, and the extended **Local Coupling / Network Mode** discussed in Section 5. The code instantiates one specific case of the more general monotone framework described in Section 4.
+The following Python code implements the two-regime dynamics, the sensitivity analysis, and the extended **Local Coupling / Network Mode** discussed in Section 5. The code instantiates one specific case of the more general monotone framework described in Section 4. The full code is available at [https://github.com/zotanika/social-dynamics-sim](https://github.com/zotanika/social-dynamics-sim).
 
 ```python
 import numpy as np
