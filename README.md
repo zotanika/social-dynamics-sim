@@ -42,6 +42,7 @@ In this paper, inspired by Shannon's channel capacity [^1], system dynamics [^3]
 ### 2.1 Channel Capacity and Social Bandwidth
 
 Shannon [^1] showed that the capacity $C$ of a communication channel with signal power $S$, noise power $N$, and bandwidth $B$ is
+
 $$ C = B \log_2\left(1 + \frac{S}{N}\right). $$
 
 By analogy, we may map this to a social context as follows:
@@ -70,7 +71,9 @@ In this section we specify a concrete two-regime model for stress and resilience
 ### 3.1 Perceived Stress
 
 We define the perceived stress $S_i(t)$ of individual $i$ at time $t$ as
+
 $$ S_i(t) = E_i^{\alpha} \bigl( 1 + \beta G_t \bigr), $$
+
 where
 *   $E_i \sim P(E)$: the empathy level of individual $i$ (sensitivity to social signals),
 *   $G_t \in [0,\infty)$: a scalar index of grouping / network coupling at time $t$,
@@ -107,8 +110,11 @@ $$ S_i^A(t) = E_i^{\alpha} (1 + \beta G_t^A), \quad S_i^B(t) = E_i^{\alpha} (1 +
 
 #### Grouping dynamics.
 We model the evolution of grouping / coupling $G_t$ separately for the two regimes:
+
 $$ G_{t+1}^A = G_t^A (1 - \eta_A), $$
+
 $$ G_{t+1}^B = G_t^B + \gamma_B\, C_t^B - \eta_B G_t^B, $$
+
 where
 *   $C_t^B = \frac{1}{N} \sum_{i=1}^N S_i^B(t)$ is the average stress (a proxy for social cost) in Society B,
 *   $\eta_A > 0$: the rate at which Society A de-emphasizes group labels ("de-grouping"),
@@ -153,17 +159,23 @@ $$ H(E,G_1) \le H(E,G_2). $$
 That is, holding empathy fixed, higher grouping/coupling never reduces perceived stress.
 
 **Assumption 2 (Stress erodes resilience).** For all $R$ and all $S_1 \le S_2$,
+
 $$ F(R,S_1;\theta) \ge F(R,S_2;\theta). $$
+
 That is, holding resilience and regime fixed, higher stress never improves next-period resilience.
 
 **Assumption 3 (Resilience is self-reinforcing).** For all $S$ and all $R_1 \le R_2$,
+
 $$ F(R_1,S;\theta) \le F(R_2,S;\theta). $$
+
 That is, holding stress and regime fixed, higher current resilience never makes next-period resilience worse.
 
 These assumptions are deliberately weak: they do not specify functional forms, do not require linearity, and do not restrict how the regime parameter $\theta$ is chosen. They simply state that (i) grouping amplifies stress, (ii) stress erodes resilience, and (iii) resilience has a nonnegative carryover effect.
 
 Given a grouping path $\{G_t\}_{t\ge 0}$ and initial conditions $\{R_i(0)\}$, these assumptions determine resilience trajectories $\{R_i^{(G)}(t)\}_{t\ge 0}$ via
+
 $$ S_i^{(G)}(t) = H(E_i, G_t), \quad R_i^{(G)}(t+1) = F\bigl(R_i^{(G)}(t), S_i^{(G)}(t); \theta\bigr). $$
+
 We write the corresponding average resilience as $\bar{R}^{(G)}(t) = \frac{1}{N}\sum_{i=1}^N R_i^{(G)}(t)$.
 
 ### 4.2 Monotonicity in Grouping
@@ -171,10 +183,15 @@ We write the corresponding average resilience as $\bar{R}^{(G)}(t) = \frac{1}{N}
 We now compare two grouping paths, $G_t$ and $\tilde{G}_t$, that share the same initial conditions and regime parameters but differ in their level of grouping over time.
 
 **Proposition 1 (Lower grouping improves resilience).** Suppose Assumptions 1–3 hold. Let $\{G_t\}_{t\ge 0}$ and $\{\tilde{G}_t\}_{t\ge 0}$ be two grouping paths such that
+
 $$ \tilde{G}_t \le G_t \quad \text{for all } t \ge 0, $$
+
 and let $\{R_i^{(G)}(t)\}$ and $\{R_i^{(\tilde{G})}(t)\}$ be the corresponding resilience trajectories with identical initial conditions $R_i^{(G)}(0)=R_i^{(\tilde{G})}(0)$. Then for all $i$ and $t$,
+
 $$ R_i^{(\tilde{G})}(t) \ge R_i^{(G)}(t), $$
+
 and therefore
+
 $$ \bar{R}^{(\tilde{G})}(t) \ge \bar{R}^{(G)}(t) \quad \text{for all } t. $$
 
 *Proof.* We proceed by induction on $t$.
@@ -183,20 +200,27 @@ At $t=0$, we have $R_i^{(\tilde{G})}(0) = R_i^{(G)}(0)$ for all $i$ by assumptio
 
 Assume that for some $t \ge 0$, $R_i^{(\tilde{G})}(t) \ge R_i^{(G)}(t)$ for all $i$.
 Because $\tilde{G}_t \le G_t$, Assumption 1 implies
+
 $$ S_i^{(\tilde{G})}(t) = H(E_i, \tilde{G}_t) \le H(E_i, G_t) = S_i^{(G)}(t) \quad \text{for all } i. $$
 
 Now consider the updates:
+
 $$ R_i^{(\tilde{G})}(t+1) = F\bigl(R_i^{(\tilde{G})}(t), S_i^{(\tilde{G})}(t); \theta\bigr), $$
+
 $$ R_i^{(G)}(t+1) = F\bigl(R_i^{(G)}(t), S_i^{(G)}(t); \theta\bigr). $$
 
 By the induction hypothesis and Assumption 3, we have
+
 $$ F\bigl(R_i^{(\tilde{G})}(t), S_i^{(\tilde{G})}(t); \theta\bigr) \ge F\bigl(R_i^{(G)}(t), S_i^{(\tilde{G})}(t); \theta\bigr), $$
+
 because $R_i^{(\tilde{G})}(t) \ge R_i^{(G)}(t)$ and $F$ is nondecreasing in $R$.
 
 By Assumption 2 and $S_i^{(\tilde{G})}(t) \le S_i^{(G)}(t)$, we also have
+
 $$ F\bigl(R_i^{(G)}(t), S_i^{(\tilde{G})}(t); \theta\bigr) \ge F\bigl(R_i^{(G)}(t), S_i^{(G)}(t); \theta\bigr). $$
 
 Combining these inequalities yields
+
 $$ R_i^{(\tilde{G})}(t+1) \ge R_i^{(G)}(t+1) \quad \text{for all } i. $$
 
 By induction, this holds for all $t \ge 0$. Averaging over $i$ gives $\bar{R}^{(\tilde{G})}(t) \ge \bar{R}^{(G)}(t)$ for all $t$. $\square$
@@ -206,19 +230,26 @@ Intuitively, lower grouping reduces stress (Assumption 1), lower stress cannot h
 ### 4.3 Implications for Maginot Time
 
 We can define a generalized Maginot Time for any grouping path $G$ as
+
 $$ t_{\text{mag}}(G) = \min\{ t \,:\, \bar{R}^{(G)}(t) \le R_{\text{crit}}\}, $$
+
 with the convention that $t_{\text{mag}}(G) = +\infty$ if the threshold is never crossed.
 
 **Proposition 2 (Lower grouping delays collapse).** Under the assumptions of Proposition 1, if $\tilde{G}_t \le G_t$ for all $t$, then
+
 $$ t_{\text{mag}}(\tilde{G}) \ge t_{\text{mag}}(G). $$
 
 *Proof.* By Proposition 1, $\bar{R}^{(\tilde{G})}(t) \ge \bar{R}^{(G)}(t)$ for all $t$.
 Suppose that $t_{\text{mag}}(G)$ is finite and that $\bar{R}^{(G)}(t_{\text{mag}}(G)) \le R_{\text{crit}}$ while $\bar{R}^{(G)}(t) > R_{\text{crit}}$ for all $t < t_{\text{mag}}(G)$.
 Then for all $t < t_{\text{mag}}(G)$,
+
 $$ \bar{R}^{(\tilde{G})}(t) \ge \bar{R}^{(G)}(t) > R_{\text{crit}}, $$
+
 so the threshold cannot be crossed earlier under $\tilde{G}$.
 At $t = t_{\text{mag}}(G)$ we have
+
 $$ \bar{R}^{(\tilde{G})}(t_{\text{mag}}(G)) \ge \bar{R}^{(G)}(t_{\text{mag}}(G)) \le R_{\text{crit}}, $$
+
 which implies $t_{\text{mag}}(\tilde{G}) \ge t_{\text{mag}}(G)$.
 If $t_{\text{mag}}(G) = +\infty$, the inequality is trivially satisfied. $\square$
 
@@ -229,22 +260,34 @@ Proposition 2 formalizes the intuition that, under the monotonicity assumptions,
 We now verify that the two-regime model in Section 3 is a special case of this abstract framework.
 
 In that model we have
+
 $$ H(E,G) = E^{\alpha} (1 + \beta G), \quad \beta \ge 0, $$
+
 so for any $E$ and any $G_1 \le G_2$,
+
 $$ H(E,G_1) = E^{\alpha} (1 + \beta G_1) \le E^{\alpha} (1 + \beta G_2) = H(E,G_2), $$
+
 which satisfies Assumption 1.
 
 For Society A, the resilience update rule is
+
 $$ F_A(R,S) = R + k_A R(1-R) - \lambda_A S. $$
+
 On the interval $R \in [0,1]$ and for $0 < k_A \le 1$, the derivative with respect to $R$ is
+
 $$ \frac{\partial F_A}{\partial R} = 1 + k_A (1 - 2R) \in [1 - k_A, 1 + k_A] \subset [0,2], $$
+
 so $F_A$ is nondecreasing in $R$.
 The derivative with respect to $S$ is $\frac{\partial F_A}{\partial S} = -\lambda_A \le 0$, so $F_A$ is nonincreasing in $S$. Thus Assumptions 2 and 3 hold.
 
 For Society B, the resilience update rule is
+
 $$ F_B(R,S) = R - k_B S + d_B. $$
+
 We have
+
 $$ \frac{\partial F_B}{\partial R} = 1 \ge 0, \quad \frac{\partial F_B}{\partial S} = -k_B \le 0, $$
+
 so Assumptions 2 and 3 also hold.
 
 Therefore, for both regimes A and B, and for any empathy distribution $P(E)$ and choice of parameters $(\alpha,\beta,k_A,\lambda_A,k_B,d_B,\dots)$ within the monotonicity range, the conclusions of Propositions 1 and 2 apply:
@@ -265,6 +308,7 @@ We implement the two-regime model using a simple Monte Carlo simulation:
 *   Resilience is updated using the regime-specific equations.
 
 We define average resilience in each society as
+
 $$ \bar{R}^A(t) = \frac{1}{N}\sum_i R_i^A(t), \quad \bar{R}^B(t) = \frac{1}{N}\sum_i R_i^B(t). $$
 
 ### 5.2 Trajectory Comparison: Society A vs Society B
@@ -316,13 +360,17 @@ Figure 3 shows the critical role of the gain parameter $\beta$. When $\beta$ is 
 ## 6. Maginot Time and Policy Interpretation
 
 For a given regime and grouping path, we define the Maginot Time for Society B as
+
 $$ t_{\text{mag}}^B = \min\{ t \,:\, \bar{R}^B(t) \le R_{\text{crit}}\}, $$
+
 with $\bar{R}^B(t) > R_{\text{crit}}$ for all $t < t_{\text{mag}}^B$.
 
 After $t_{\text{mag}}^B$, average resilience is so low that even modest shocks can push many individuals near $R_i^B \approx 0$. In this region, late interventions that merely reduce $\beta$ (e.g., heavy regulation or shutdown of platforms) may struggle to restore resilience without large, sustained external measures.
 
 If we approximate the decay as exponential, $\bar{R}^B(t) \approx R_0 e^{-kt}$, $k>0$, then
+
 $$ t_{\text{mag}}^B \approx \frac{1}{k} \ln\left(\frac{R_0}{R_{\text{crit}}}\right), $$
+
 where $k$ is an effective decay rate that compresses the combined effects of $\alpha, \beta, k_B, d_B, \gamma_B$, and the empathy distribution. This highlights that the window for effective intervention is finite and governed by the internal feedback structure of the system.
 
 Proposition 2 adds a structural reinterpretation: among all policies that share the same regime parameters $\theta$ but differ in their grouping paths, those that systematically keep grouping lower will, under the monotonicity assumptions, have weakly larger $t_{\text{mag}}$. In this sense, encouraging group dissolution or de-emphasizing rigid identity clustering is a structurally safe direction for extending the system's resilient phase.
